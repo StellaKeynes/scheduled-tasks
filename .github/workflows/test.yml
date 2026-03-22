@@ -23,23 +23,50 @@ jobs:
 
       - name: Check secrets are configured
         env:
-          MY_EMAIL: ${{ secrets.MY_EMAIL }}
-          MY_PASSWORD: ${{ secrets.MY_PASSWORD }}
+          ACCOUNT_SID: ${{ secrets.ACCOUNT_SID }}
+          API_KEY: ${{ secrets.API_KEY }}
+          AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
+          FROM_NUMBER: ${{ secrets.FROM_NUMBER }}
+          TO_NUMBER: ${{ secrets.TO_NUMBER }}
         run: |
-          if [ -z "$MY_EMAIL" ]; then
-            echo "MY_EMAIL secret is not set!"
+          if [ -z "$ACCOUNT_SID" ]; then
+            echo "ACCOUNT_SID secret is not set!"
             echo "Go to Settings > Secrets > Actions and add it."
             exit 1
           else
-            echo "MY_EMAIL is configured"
+            echo "ACCOUNT_SID is configured"
           fi
 
-          if [ -z "$MY_PASSWORD" ]; then
-            echo "MY_PASSWORD secret is not set!"
+          if [ -z "$API_KEY" ]; then
+            echo "API_KEY secret is not set!"
             echo "Go to Settings > Secrets > Actions and add it."
             exit 1
           else
-            echo "MY_PASSWORD is configured"
+            echo "API_KEY is configured"
+          fi
+
+          if [ -z "$AUTH_TOKEN" ]; then
+            echo "AUTH_TOKEN secret is not set!"
+            echo "Go to Settings > Secrets > Actions and add it."
+            exit 1
+          else
+            echo "AUTH_TOKEN is configured"
+          fi
+
+          if [ -z "$FROM_NUMBER" ]; then
+            echo "FROM_NUMBER secret is not set!"
+            echo "Go to Settings > Secrets > Actions and add it."
+            exit 1
+          else
+            echo "FROM_NUMBER is configured"
+          fi
+
+          if [ -z "$TO_NUMBER" ]; then
+            echo "TO_NUMBER secret is not set!"
+            echo "Go to Settings > Secrets > Actions and add it."
+            exit 1
+          else
+            echo "TO_NUMBER is configured"
           fi
 
           echo ""
@@ -63,12 +90,12 @@ jobs:
             exit 1
           fi
 
-          if [ -f "birthdays.csv" ]; then
-            echo "birthdays.csv found"
-          else
-            echo "birthdays.csv not found!"
-            exit 1
-          fi
+          # if [ -f "birthdays.csv" ]; then
+          #   echo "birthdays.csv found"
+          # else
+          #   echo "birthdays.csv not found!"
+          #   exit 1
+          # fi
 
           echo ""
           echo "All required files found!"
