@@ -43,11 +43,11 @@ if rain:
 
     print(message.status)
 else:
-        print("Do not need an umbrella!")
+    print("Do not need an umbrella!")
     client = Client(account_sid, auth_token)
 
     message = client.messages.create(
-        body="No umbrella!☔️",
+        body="No umbrella today!☔️",
         from_="+18147780719",
         to="+8613479002771",
     )
